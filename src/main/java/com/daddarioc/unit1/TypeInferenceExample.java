@@ -1,4 +1,4 @@
-package com.daddarioc.Unit1;
+package com.daddarioc.unit1;
 
 public class TypeInferenceExample {
 

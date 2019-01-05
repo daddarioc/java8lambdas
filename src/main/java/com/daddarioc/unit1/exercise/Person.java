@@ -1,4 +1,4 @@
-package com.daddarioc.Unit1.exercise;
+package com.daddarioc.unit1.exercise;
 
 
 public class Person {

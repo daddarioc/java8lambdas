@@ -1,9 +1,10 @@
-package com.daddarioc.Unit1.exercise;
+package com.daddarioc.unit1.exercise;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Unit1ExerciseJava8 {
     public static void main(String[] args) {
@@ -24,21 +25,26 @@ public class Unit1ExerciseJava8 {
         System.out.println("***********************************");
 
         System.out.println("Java 8 People");
-        printPeople(peopleJava8);
+
+        //use the condition of printing all people
+        printConditionally(peopleJava8, p->true);
 
         // step 3: create method that prints all people beginning with 'C'
         System.out.println("***********************************");
         System.out.println("STEP 3 - Print all C people");
         System.out.println("***********************************");
 
+        System.out.println("Print last name with C:");
         printConditionally(peopleJava8, (Person p) -> p.getLastName().toLowerCase().startsWith("c"));
+
+        System.out.println("Print first name with C:");
         printConditionally(peopleJava8, (Person p) -> p.getFirstName().toLowerCase().startsWith("c"));
     }
 
-
-    private static void printConditionally(List<Person> people, Unit1ExerciseJava7.PrintCondition condition) {
+    //re-written to show the use of the available Predicate type
+    private static void printConditionally(List<Person> people, Predicate<Person> predicate) {
         for (Person p : people) {
-            if (condition.test(p)) {
+            if (predicate.test(p)) {
                 System.out.println(p);
             }
         }
