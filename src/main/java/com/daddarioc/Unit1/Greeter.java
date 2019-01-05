@@ -1,4 +1,4 @@
-package com.daddarioc;
+package com.daddarioc.Unit1;
 
 public class Greeter {
     public void greet(Greeting greeting) {
