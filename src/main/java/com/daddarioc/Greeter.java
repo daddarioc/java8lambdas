@@ -29,7 +29,11 @@ public class Greeter {
         //helloWorldGreeting.perform();
 
         myLambdaFunction.perform();
-        //greeter.greet(myLambdaFunction);
+
+        // since the lambda and the class implement the interface,
+        // greeter doesn't care what one it gets
+        greeter.greet(myLambdaFunction);
+        greeter.greet(innerClassGreeting);
 
 
     }
