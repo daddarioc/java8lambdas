@@ -5,6 +5,7 @@ import com.daddarioc.unit1.exercise.Person;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Unit1ExerciseJava8 {
@@ -31,7 +32,7 @@ public class Unit1ExerciseJava8 {
         System.out.println("***********************************");
 
         //use the condition of printing all people
-        performConditionally(people, p->true);
+        performConditionally(people, p->true, p -> System.out.println(p));
 
         // step 3: create method that prints all people beginning with 'C'
         System.out.println("***********************************");
@@ -39,17 +40,18 @@ public class Unit1ExerciseJava8 {
         System.out.println("***********************************");
 
         System.out.println("Print last name with C:");
-        performConditionally(people, (Person p) -> p.getLastName().toLowerCase().startsWith("c"));
+        performConditionally(people, (Person p) -> p.getLastName().toLowerCase().startsWith("c"), p -> System.out.println(p));
 
         System.out.println("Print first name with C:");
-        performConditionally(people, (Person p) -> p.getFirstName().toLowerCase().startsWith("c"));
+        performConditionally(people, (Person p) -> p.getFirstName().toLowerCase().startsWith("c"), p -> System.out.println(p.getFirstName()));
     }
 
     //re-written to show the use of the available Predicate type
-    private static void performConditionally(List<Person> people, Predicate<Person> predicate) {
+    private static void performConditionally(List<Person> people, Predicate<Person> predicate,
+                                             Consumer<Person> consumer) {
         for (Person p : people) {
             if (predicate.test(p)) {
-                System.out.println(p);
+                consumer.accept(p);
             }
         }
     }
